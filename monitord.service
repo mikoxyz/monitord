@@ -1,0 +1,37 @@
+[Unit]
+Description=S stupid daemon that monitors the status of an arbritary amount of systems using ping
+After=network-online.target
+
+[Service]
+MountAPIVFS=true
+ProtectProc=noaccess
+ProcSubset=pid
+DynamicUser=true
+CapabilityBoundingSet=
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+RuntimeDirectory=monitord
+PrivateTmp=true
+PrivateDevices=true
+PrivateIPC=true
+PrivateUsers=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+LockPersonality=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+PrivateMounts=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+
+Type=simple
+ExecStart=/usr/local/bin/monitord -l /usr/local/etc/monitord/hostlist
+
+[Install]
+WantedBy=default.target
