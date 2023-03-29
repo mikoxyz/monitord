@@ -63,6 +63,11 @@ func get_pinger(host string) (*probing.Pinger, bool) {
 		err_check(err)
 	}
 
+	/*
+	 * i'm not sure pro-bing supports unprivileged icmp on the BSDs, so let's just set pinger
+	 * to be privileged
+	 */
+	pinger.SetPrivileged(true)
 	return pinger, dns_err
 }
 
