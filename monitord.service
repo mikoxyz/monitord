@@ -1,5 +1,5 @@
 [Unit]
-Description=S stupid daemon that monitors the status of an arbritary amount of systems using ping
+Description=A stupid daemon that monitors the status of an arbritary amount of systems using ping
 After=network-online.target
 
 [Service]
